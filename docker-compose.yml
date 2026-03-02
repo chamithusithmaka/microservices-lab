@@ -9,18 +9,34 @@ services:
       - item-service
       - order-service
       - payment-service
+    networks:
+      - microservices-net
+    restart: on-failure
 
   item-service:
     build: ./ItemService
     ports:
       - "8081:8081"
+    networks:
+      - microservices-net
+    restart: on-failure
 
   order-service:
     build: ./OrderService
     ports:
       - "8082:8082"
+    networks:
+      - microservices-net
+    restart: on-failure
 
   payment-service:
     build: ./PaymentService
     ports:
       - "8083:8083"
+    networks:
+      - microservices-net
+    restart: on-failure
+
+networks:
+  microservices-net:
+    driver: bridge
