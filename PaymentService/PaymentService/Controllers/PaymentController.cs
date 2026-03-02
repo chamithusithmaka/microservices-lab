@@ -5,7 +5,7 @@ using PaymentService.Services;
 namespace PaymentService.Controllers
 {
     [ApiController]
-    [Route("payments")]
+    [Route("")]
     public class PaymentController : ControllerBase
     {
         private readonly PaymentStore _store;
