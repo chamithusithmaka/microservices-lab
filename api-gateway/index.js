@@ -4,9 +4,6 @@ const { createProxyMiddleware } = require('http-proxy-middleware');
 const app = express();
 const PORT = 8080;
 
-// JSON parser for POST requests
-app.use(express.json());
-
 // Proxy rules
 app.use('/items', createProxyMiddleware({
   target: 'http://item-service:8081',
