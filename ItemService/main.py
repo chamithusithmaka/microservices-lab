@@ -10,19 +10,19 @@ items = ["Book", "Laptop", "Phone"]
 class Item(BaseModel):
     name: str
 
-# GET /items
-@app.get("/items")
+# GET / (via gateway: /items)
+@app.get("/")
 def get_items():
     return items
 
-# POST /items
-@app.post("/items", status_code=201)
+# POST / (via gateway: /items)
+@app.post("/", status_code=201)
 def add_item(item: Item):
     items.append(item.name)
     return {"message": f"Item added: {item.name}"}
 
-# GET /items/{id}
-@app.get("/items/{id}")
+# GET /{id} (via gateway: /items/{id})
+@app.get("/{id}")
 def get_item(id: int):
     if id < 0 or id >= len(items):
         raise HTTPException(status_code=404, detail="Item not found")
